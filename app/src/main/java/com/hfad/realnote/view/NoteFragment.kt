@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.hfad.realnote.databinding.FragmentNoteBinding
 import com.hfad.realnote.model.NoteDatabase
@@ -33,9 +31,9 @@ class NoteFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         val adapter = NoteItemAdapter()
         binding.recyclerviewNote.adapter = adapter
-        viewModel.notes.observe(viewLifecycleOwner){
+        viewModel.notes.observe(viewLifecycleOwner) {
             it?.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         }
         return binding.root

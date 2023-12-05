@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="note"
             type="com.hfad.realnote.model.Note" />
@@ -20,15 +19,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/note_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textSize="16sp"
                 android:text="@{note.noteName}"
                 />
+            <CheckBox
+                android:id="@+id/note_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:clickable="true"
+                android:checked="@{note.noteDone}"
+                android:focusable="true" />
 
         </LinearLayout>
 

@@ -2,35 +2,27 @@ package com.hfad.realnote.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.hfad.realnote.databinding.NoteItemBinding
 import com.hfad.realnote.model.Note
 
 
-class NoteItemAdapter : RecyclerView.Adapter<NoteItemAdapter.NoteItemVH>() {
+class NoteItemAdapter : ListAdapter<Note, NoteItemAdapter.NoteItemVH>(NoteItemDiffUtil()) {
 
-    var data = listOf<Note>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemVH {
         return NoteItemVH.inflateFrom(parent)
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
 
     override fun onBindViewHolder(holder: NoteItemVH, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 
 
-    class NoteItemVH(private val binding: NoteItemBinding) : ViewHolder(binding.root) {
+    class NoteItemVH(private val binding: NoteItemBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
             fun inflateFrom(parent: ViewGroup): NoteItemVH {
                 val layoutInflate = LayoutInflater.from(parent.context)
