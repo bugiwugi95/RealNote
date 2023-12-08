@@ -1,4 +1,4 @@
-package com.hfad.realnote.view
+package com.hfad.realnote.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,8 @@ import com.hfad.realnote.databinding.NoteItemBinding
 import com.hfad.realnote.model.Note
 
 
-class NoteItemAdapter : ListAdapter<Note, NoteItemAdapter.NoteItemVH>(NoteItemDiffUtil()) {
+class NoteItemAdapter(private val clickListener: (noteId: Long) -> Unit) :
+    ListAdapter<Note, NoteItemAdapter.NoteItemVH>(NoteItemDiffUtil()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteItemVH {
@@ -18,7 +19,7 @@ class NoteItemAdapter : ListAdapter<Note, NoteItemAdapter.NoteItemVH>(NoteItemDi
 
     override fun onBindViewHolder(holder: NoteItemVH, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        holder.bind(item, clickListener)
     }
 
 
@@ -32,8 +33,10 @@ class NoteItemAdapter : ListAdapter<Note, NoteItemAdapter.NoteItemVH>(NoteItemDi
             }
         }
 
-        fun bind(item: Note) {
+        fun bind(item: Note, clickListener: (noteId: Long) -> Unit) {
             binding.note = item
+            binding.root.setOnClickListener { clickListener(item.noteId) }
+
         }
     }
 

@@ -13,6 +13,7 @@ abstract class NoteDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: NoteDatabase? = null
 
+
         fun getInstance(context: Context): NoteDatabase {
             synchronized(this) {
                 var instance = INSTANCE

@@ -1,4 +1,4 @@
-package com.hfad.realnote.view
+package com.hfad.realnote.view.adapter
 
 
 import androidx.recyclerview.widget.DiffUtil

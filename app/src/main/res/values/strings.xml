@@ -4,4 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Enter_Note">Введите заметку</string>
     <string name="CreateNote">Создать</string>
+    <string name="up">Обновить</string>
+    <string name="del">Удалить</string>
 </resources>

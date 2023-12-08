@@ -17,17 +17,21 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/note"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin16"
-            android:inputType="text"
             android:hint="@string/Enter_Note"
-            android:text="@={viewModel.newNotes}"
+            android:inputType="text"
             android:textColor="@color/userText"
-            android:textSize="@dimen/TextInputEditText" />
+            android:textSize="@dimen/TextInputEditText">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.newNotes}"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_create_note"
@@ -43,12 +47,12 @@
             android:id="@+id/recyclerview_note"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:layout_marginTop="@dimen/margin16"
-            android:gravity="top"
-            app:spanCount="2"
+            android:layout_weight="1"
             android:fontFamily="@font/candal"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager" />
+            android:gravity="top"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+            app:spanCount="2" />
 
 
     </LinearLayout>
